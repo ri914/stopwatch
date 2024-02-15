@@ -1,0 +1,15 @@
+#count{
+    margin-left: 10px;
+}
+span{
+    font-size: 200%;
+}
+.clickbtn{
+    display: flex;
+    justify-content: left;  
+    margin-top: 10px;
+}
+#stop{
+    margin: auto 5px;
+}
+
