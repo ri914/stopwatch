@@ -33,15 +33,21 @@ stop.addEventListener('click',function(){
 
 const reset=document.getElementById('reset')//リセット要素を取得
 reset.addEventListener('click',function(){
-       intervalId=null//intervalIdをリセットする
+    if(intervalId!==null){
+       clearInterval(intervalId);//ストップウォッチを停止
+       intervalId=null;//intervalIdをリセットする
+       mseconds=0;//時間表示を0にする
+       seconds=0;
+       minutes=0;
+       hours=0;
       document.getElementById('mseconds').textContent="0";//HTML要素の時間表示を0に更新する
       document.getElementById('seconds').textContent="0";
       document.getElementById('minutes').textContent="0";
-      document.getElementById('hours').textContent="0";
+      document.getElementById('hours').textContent="0";}
 });
 $('#start').click(function(){//スタートボタンを押すと
     $(this).prop('disabled',true);//スタートボタンが押せなくなる
-    $(stop).prop('disabled',false);//ストップボタンが押せるようになる
+    $('#stop').prop('disabled',false);//ストップボタンが押せるようになる
     $(reset).prop('disabled',false);//リセットボタンが押せるようになる
 });
 $('#stop').click(function(){//ストップボタンを押すと
@@ -50,5 +56,7 @@ $('#stop').click(function(){//ストップボタンを押すと
 });
 $('#reset').click(function(){//リセットボタンを押すと
     $(this).prop('disabled',true);//リセットボタンが押せなくなる
+    $('#start').prop('disabled',false)//スタートボタンが押せるようになる
+    $('#stop').prop('disabled',true)//ストップボタンが押せなくなる
 });
 
